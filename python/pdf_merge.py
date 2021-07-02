@@ -29,7 +29,13 @@ def form_pdf(image_filenames, out_filename):
 
     #Save images as PDF
     try:
-        images[0].save(out_filename, save_all=True, append_images=images[1:], producer='pdf_merge')
+        if len(images) > 1:
+            images[0].save(out_filename, save_all=True, append_images=images[1:], producer='pdf_merge')
+        elif len(images) == 1:
+            images[0].save(out_filename, producer='pdf_merge')
+        else:
+            #len(images)=0
+            print('No images to save')
     except OSError:
         print('Could not save file %s.' % out_filename)
 
@@ -41,13 +47,19 @@ def list_images(odds_dir, evens_dir):
     #Return value is a list of all the images' filenames, sorted in order of page number
 
     #List files in each directory. Sort odds (evens) in (reverse) order - i.e. in page order
-    odds = os.listdir(odds_dir).sort()
-    evens = os.listdir(evens_dir).sort(reverse=True)
+    odds = os.listdir(odds_dir)
+    evens = os.listdir(evens_dir)
+
+    #Sort and add path
+    odds_full = [odds_dir + '/' + f for f in odds]
+    odds_full.sort()
+    evens_full = [evens_dir + '/' + f for f in evens]
+    evens_full.sort(reverse=True)
 
     #Define a list large enough to hold all pages, then alternate odd and even pages in list
-    combined = odds + evens
-    combined[::2] = odds
-    combined[1::2] = evens
+    combined = odds_full + evens_full
+    combined[::2] = odds_full
+    combined[1::2] = evens_full
 
     return combined
 

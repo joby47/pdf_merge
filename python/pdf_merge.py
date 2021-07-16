@@ -7,6 +7,7 @@
 #A simple utility for combining image files - such as scanned pages - into a single PDF document.
 
 import os
+import sys
 from PIL import Image
 
 def form_pdf(image_filenames, out_filename):
@@ -75,11 +76,17 @@ def merge_images(odds_dir, evens_dir, out_filename):
 
 def main():
     #Entry point if this script is executed directly
-    #Ask for user to input the directories containing the images as well as the output filename. Then call merge_images()
-
-    odds = input('Directory containig odd-numbered pages: ')
-    evens = input('Directory containing even-numbered pages: ')
-    out = input('Output (PDF) filename: ')
+    #Script needs to know the directories where the even- and odd-numbered pages are stored as well as where to save the output pdf
+    #These can be supplied either through command line arguments or by user input
+    
+    if len(sis.argv) == 4:
+        [odds, evens, out] = sys.argv[1:]
+    elif len(sis.argv) == 1:
+        odds = input('Directory containig odd-numbered pages: ')
+        evens = input('Directory containing even-numbered pages: ')
+        out = input('Output (PDF) filename: ')
+    else:
+        print("Error: please supply zero or three command line arguments.\nUsage: %s [odds_directory, evens_directory, output_filename]" % sys.argv[0])
 
     #Add file extension if necessary
     if out[-4:] != '.pdf':

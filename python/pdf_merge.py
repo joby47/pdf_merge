@@ -79,14 +79,15 @@ def main():
     #Script needs to know the directories where the even- and odd-numbered pages are stored as well as where to save the output pdf
     #These can be supplied either through command line arguments or by user input
     
-    if len(sis.argv) == 4:
+    if len(sys.argv) == 4:
         [odds, evens, out] = sys.argv[1:]
-    elif len(sis.argv) == 1:
+    elif len(sys.argv) == 1:
         odds = input('Directory containig odd-numbered pages: ')
         evens = input('Directory containing even-numbered pages: ')
         out = input('Output (PDF) filename: ')
     else:
         print("Error: please supply zero or three command line arguments.\nUsage: %s [odds_directory, evens_directory, output_filename]" % sys.argv[0])
+        return
 
     #Add file extension if necessary
     if out[-4:] != '.pdf':

@@ -6,6 +6,9 @@ Many printers have an automatic feed scanner feature. This allows multi-page doc
 
 This simple Python module aims to assist with scanning two-sided, multi-page documents using such scanners. Its purpose is to combine the individual image files obtained from the automatic feed scanning into a single PDF document.
 
+## Dependencies
+This module uses the [Pillow library](https://pillow.readthedocs.io/en/stable/index.html "Pillow homepage") to load and maniplulate the images. Pillow must be installed for the module to work. If Pillow is not currently installed on your machine, please see the [Pillow installation instructions](https://pillow.readthedocs.io/en/stable/installation.html "Installation - Pillow"). In most cases, this amounts to using `python3 -m pip install --upgrade Pillow`.
+
 ## Preparation
 In order to get the scanned document in to the appropriate format to use with pdf_merge, please follow the steps bellow.
 1. Begin by scanning the odd-numbered pages in the order they appear in the document. Place the document to be scanned into the scanner feed as you usually would. Select the option to scan to individual images (e.g. JPEG) from the scanner menu and scan the document.
@@ -49,4 +52,3 @@ evens_dir = '../example/even'
 outfile = '../example/scanned.pdf'
 pdf_merge.merge_images(odds_dir, evens_dir, outfile)
 ```
-

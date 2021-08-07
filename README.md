@@ -6,6 +6,14 @@ Many printers have an automatic feed scanner feature. This allows multi-page doc
 
 This simple Python module aims to assist with scanning two-sided, multi-page documents using such scanners. Its purpose is to combine the individual image files obtained from the automatic feed scanning into a single PDF document.
 
+## Preparation
+In order to get the scanned document in to the appropriate format to use with pdf_merge, please follow the steps bellow.
+1. Begin by scanning the odd-numbered pages in the order they appear in the document. Place the document to be scanned into the scanner feed as you usually would. Select the option to scan to individual images (e.g. JPEG) from the scanner menu and scan the document.
+2. Save the image files of the odd-numbered pages into a single directory which contains no other files.
+3. Now scan the even-numbered pages. Place the document into the scanner feed 'backwards' by flipping it on its long edge. The reveerse side of the last page should now be on top. Scan the pages to individual image files as before
+4. Save the image files of the even-numbered pages into a separate empty directory.
+5. Use the pdf_merge modules to merge the image files into a single PDF document.
+
 ## Usage
 The purpose of the pdf_merge module is create a single PDF file of a document, the pages of which have been scanned into separate image files. 
 

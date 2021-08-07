@@ -23,6 +23,8 @@ There are three ways in which this information can be supplied. These are descri
 ### Command line interface
 The user may choose to simply execute the Python module. This can be done by opening the terminal (or command prompt), navigating to the directory containing the pdf_merge.py file and entering `python3 pdf_merge.py`. This will launch a command line interface which will prompt the user to enter the necessary information.
 
+![Example of using the CLI](/example/CLI_example.png)
+
 ### Command line arguments
 The user may elect to supply the necessary information by command line arguments. Three arguments should be provided, giving the information in the order listed above.
 
